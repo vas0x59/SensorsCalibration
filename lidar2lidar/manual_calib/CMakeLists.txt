@@ -13,6 +13,7 @@ link_directories(${OpenCV_LIBRARY_DIRS})
 
 find_package(Boost REQUIRED system)
 find_package(OpenCV REQUIRED)
+find_package(jsoncpp REQUIRED)
 
 include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${EIGEN_ROOT})
@@ -24,9 +25,10 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/bin)
 
 file(GLOB_RECURSE PARSER_PATH src/*.cpp)
 add_library(${PROJECT_NAME} STATIC ${PARSER_PATH})
-target_link_libraries(${PROJECT_NAME} libjsoncpp.a ${OpenCV_LIBS} ${Boost_SYSTEM_LIBRARY})
+target_link_libraries(${PROJECT_NAME}  ${OpenCV_LIBS} ${Boost_SYSTEM_LIBRARY} jsoncpp_lib ${Pangolin_LIBRARIES})
 
 add_executable(run_lidar2lidar src/run_lidar2lidar.cpp)
 target_link_libraries(run_lidar2lidar ${PROJECT_NAME})
 target_link_libraries(run_lidar2lidar ${PCL_LIBRARIES})
 target_link_libraries(run_lidar2lidar ${Pangolin_LIBRARIES})
+# target_link_libraries(run_lidar2lidar jsoncpp_lib)

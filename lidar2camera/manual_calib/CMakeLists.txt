@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(lidar2camera)
-set(CMAKE_CXX_FLAGS "-g3 -o -Wall")
+set(CMAKE_CXX_FLAGS "-O3 -Wall")
 set(CMAKE_CXX_STANDARD 17)
 
 find_package(Pangolin 0.8 REQUIRED)
 include_directories(${Pangolin_INCLUDE_DIRS})
 link_directories(${Pangolin_LIBRARY_DIRS})
 
-find_package(PCL 1.9 EXACT REQUIRED)
+find_package(PCL 1.9 REQUIRED)
 find_package(Boost REQUIRED system)
 find_package(OpenCV REQUIRED)
 find_package(jsoncpp REQUIRED)
