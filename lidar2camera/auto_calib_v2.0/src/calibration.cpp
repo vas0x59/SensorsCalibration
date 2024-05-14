@@ -24,7 +24,7 @@ void Create_ColorBar()
         pColor[ba * 3 + 1] = S[s / 13];
         pColor[ba * 3 + 2] = V[v / 13 / 3];
     }
-    cv::cvtColor(color, color_bar, CV_HSV2BGR);
+    cv::cvtColor(color, color_bar, cv::COLOR_HSV2BGR);
 }
 
 Calibrator::Calibrator(const std::string mask_dir,
@@ -191,7 +191,7 @@ void Calibrator::Segment_pc(const pcl::PointCloud<pcl::PointXYZI>::Ptr cloud,
         seg.segment(*indices_plane, *coefficients);
         plane_size = indices_plane->indices.size();
     }
-    std::cout << "Plane points < 1500, stop extracting plane." << std::endl;
+    
 
     // euclidean cluster extraction
     pcl::EuclideanClusterExtraction<pcl::PointXYZI> ec;
@@ -513,7 +513,7 @@ void Calibrator::VisualProjectionSegment(Eigen::Matrix4f T, std::string img_file
         }
     }
 
-    for (int i = 1; i < N_SEG; i++)
+    for (int i = 0; i < N_SEG; i++)
     {
         cv::Vec3b color = color_bar.at<cv::Vec3b>(0, i);
         for (cv::Point point : lidar_points[i])

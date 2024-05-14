@@ -120,6 +120,7 @@ int main(int argc, char *argv[]) {
        iter++) {
     int32_t slave_id = iter->first;
     Eigen::Matrix4d transform = iter->second;
+    std::cout << "slave: " << slave_id << " " << "transform: "<< transform << std::endl;
 
     auto slave_iter = lidar_points.find(slave_id);
     pcl::PointCloud<pcl::PointXYZI> slave_pc = slave_iter->second;
